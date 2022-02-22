@@ -10,7 +10,11 @@ const studentSchema = new Schema({
     submited:{
         type: Boolean,
         default: false,
-    }
+    },
+    updated:{
+        type: Boolean,
+        default: false,
+    },
 });
 
 let student = mongoose.model('student', studentSchema);

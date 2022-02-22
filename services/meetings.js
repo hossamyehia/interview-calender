@@ -52,10 +52,11 @@ const getAll = ()=>{
     });
 }
 /**
- * Update Cart Data
+ * Append the student to meeting
  * @param {String} day
- * @param {Number} Hour
- * @returns Promise "Updated Cart" || "Error"
+ * @param {Number} our
+ * @param {String} email
+ * @returns Promise "Done msg" || "Error"
  */
 const addStudent = (day, hour, email) => {
     return new Promise((resolve, reject) => {
@@ -68,12 +69,28 @@ const addStudent = (day, hour, email) => {
         
     });
 }
+/**
+ * remove Student from meeting
+ * @param {String} email 
+ * @returns Promise "Done msg" || "Error"
+ */
+const removeStudent = (email) => {
+    return new Promise((resolve, reject) => {
 
+        Meeting.updateOne({ students: { $in: [email] } },{$inc: {numberOfStudents: -1},$pull: {students:email}}).then((res) => {
+            resolve(res);
+        }).catch(err => {
+            reject(err);
+        });
+        
+    });
+}
 
 
 module.exports = {
     add,
     get,
     getAll,
-    addStudent
+    addStudent,
+    removeStudent
 }

@@ -67,9 +67,45 @@ const setSubmit = (email)=>{
     });
 }
 
+/**
+ * Update to submit
+ * @param {String} email 
+ * @returns 
+ */
+ const unSubmit = (email)=>{
+    return new Promise((resolve, reject) => {
+
+        Student.updateOne({email:email},{$set: {submited: false}}).then((res) => {
+            resolve(res);
+        }).catch(err => {
+            reject(err);
+        });
+        
+    });
+}
+
+/**
+ * 
+ * @param {*} email 
+ * @returns 
+ */
+const setUpdate = (email)=>{
+    return new Promise((resolve, reject) => {
+
+        Student.updateOne({email:email},{$set: {updated: true}}).then((res) => {
+            resolve(res);
+        }).catch(err => {
+            reject(err);
+        });
+        
+    });
+}
+
 module.exports = {
     addMany,
     get,
     getAll,
-    setSubmit
+    setSubmit,
+    unSubmit,
+    setUpdate
 }

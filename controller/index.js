@@ -46,9 +46,6 @@ const getData = (req, res, next) => {
    
 }
 
-
-
-
 module.exports = {
     getData,
     addStudent

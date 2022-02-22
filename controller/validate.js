@@ -9,6 +9,7 @@ const studentService = require('../services/student');
  * @param {Object} next 
  */
 let isStudent = (req, res, next) => {
+    console.log("Stage 1");
     studentService.get(req.body.email).then( (student) => {
         if(student){
             req.student = student;
@@ -30,6 +31,39 @@ const isSubmited = (req, res, next) => {
     if(req.student.submited){
         req.flash("error", "You have already submited");
         res.redirect('/');
+    }else{
+        next();
+    }
+}
+
+
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+const isNotSubmited = (req, res, next) => {
+    console.log("Stage 3");
+    if(req.student.submited){
+        next();
+    }else{
+        req.flash("error", "You haven`t submited before");
+        res.redirect('/update');
+    }
+}
+
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+const isUpdated = (req, res, next) => {
+    console.log("Stage 2");
+    if(req.student.updated){
+        req.flash("error", "You used your only chance");
+        res.redirect('/update');
     }else{
         next();
     }
@@ -59,5 +93,7 @@ const isNotFull = (req, res, next) => {
 module.exports = {
     isStudent,
     isSubmited,
+    isNotSubmited,
+    isUpdated,
     isNotFull,
 }

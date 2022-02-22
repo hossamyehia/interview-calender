@@ -15,6 +15,7 @@ connectDB();
 var indexRouter = require('./routes/index');
 var meetingsRouter = require('./routes/meetings');
 var studentsRouter = require('./routes/students');
+var updateRouter = require('./routes/update');
 
 var app = express();
 
@@ -32,8 +33,9 @@ app.use(session({cookie: { maxAge: 60000 }}));
 app.use(flash());
 
 app.use('/', indexRouter);
-app.use('/meetings', meetingsRouter);
+//app.use('/meetings', meetingsRouter);
 app.use('/students', studentsRouter);
+app.use('/update', updateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
