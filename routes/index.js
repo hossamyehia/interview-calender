@@ -8,6 +8,6 @@ const validateController = require('../controller/validate')
 /* GET home page. */
 router.get('/', indexController.getData);
 
-router.post('/', validateController.isStudent, validateController.isNotFull, indexController.addStudent )
+router.post('/', validateController.isStudent, validateController.isSubmited, validateController.isNotFull, indexController.addStudent )
 
 module.exports = router;

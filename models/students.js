@@ -6,6 +6,10 @@ const studentSchema = new Schema({
         type: String,
         required: true,
         unique: true
+    },
+    submited:{
+        type: Boolean,
+        default: false,
     }
 });
 

@@ -35,7 +35,11 @@
                 <% day.hours.forEach( hour => { %>
                 <div class="<%= color[hour.numberOfStudents]%>">
                   <label for="<%= hour.hour %>"><%= hour.title %></label>
-                  <input type="radio" name="hour" value="<%= hour.hour %>" required>
+                  <%if(hour.numberOfStudents === 8) {%>
+                    <input type="radio" name="hour" value="<%= hour.hour %>" disabled>
+                  <% }else {%>
+                    <input type="radio" name="hour" value="<%= hour.hour %>" required>
+                  <% } %>
                 </div>
               <% }); %>
             </div>
