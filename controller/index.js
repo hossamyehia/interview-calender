@@ -22,7 +22,7 @@ const getData = (req, res, next) => {
                 }
             });
         });
-        res.render('index', { data: data,success: "",error: req.flash("error"), step: step, title: 'Calender' });
+        res.render('index', { data: data,success: req.flash('success'),error: req.flash("error"), step: step, title: 'Calender' });
     }).catch(err => res.status(500).setHeader('Content-Type', 'application/json').json({err: err}));
    
 }
