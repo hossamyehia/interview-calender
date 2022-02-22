@@ -4,7 +4,7 @@ body {
   align-items: center;
   justify-content: center;
   
-  width: 90vw;
+  width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -211,14 +211,18 @@ input[type="submit"]:active{
 }
 
 .six{
+  color: white;
   background: linear-gradient(to top,#3D5AF1 75%, white 75% 100%);
 }
 
 .seven{
+  color: white;
   background: linear-gradient(to top,#263896 87.5%, white 87.5% 100%);
 }
 
 .eight{
+  color: white;
+  cursor: default !important;
   background: linear-gradient(to top,#0E153A 100%, white 100% 100%);
 }
 
