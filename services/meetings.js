@@ -43,7 +43,7 @@ const add = (title, day, hour)=> {
 const getAll = ()=>{
     return new Promise((resolve, reject) => {
 
-        Meeting.aggregate([{$sort: {_id: 1}}, { $group : { _id : "$day", hours: { $push: "$$ROOT" } } }]).then((meetings) => {
+        Meeting.aggregate([{$project: {__v: 0,_id:0,note:0}},{$sort: {_id: 1}}, { $group : { _id : "$day", hours: { $push: "$$ROOT" } } }]).then((meetings) => {
             resolve(meetings);
         }).catch(err => {
             reject(err);
