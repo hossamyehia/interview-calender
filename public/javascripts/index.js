@@ -89,24 +89,26 @@ const handleSelection = () => {
         let target = event.target;
         let parent = target.parentNode;
 
+        console.log(data);
+
         let oldClass = data[Day][target.value.toString()][0]; 
         let newClass = data[Day][target.value.toString()][1]; 
 
         if(parent.classList.contains(oldClass))
-            parent.classList.toggle(oldClass);
+            parent.classList.remove(oldClass);
 
-        if(!parent.classList.contains(oldClass))
-            parent.classList.toggle(newClass);
+        if(!parent.classList.contains(newClass))
+            parent.classList.add(newClass);
 
         if (target !== prevHour) {
 
             let oldClass = data[prevDay.value][prevHour.value.toString()][0];
             let newClass = data[prevDay.value][prevHour.value.toString()][1];
-            if(!parent.classList.contains(oldClass))
-                prevHour.parentNode.classList.toggle(oldClass);
+            if(!prevHour.parentNode.classList.contains(oldClass))
+                prevHour.parentNode.classList.add(oldClass);
 
-            if(parent.classList.contains(newClass))
-                prevHour.parentNode.classList.toggle(newClass);
+            if(prevHour.parentNode.classList.contains(newClass))
+                prevHour.parentNode.classList.remove(newClass);
             
             prevHour = target;
 

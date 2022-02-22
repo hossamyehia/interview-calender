@@ -22,7 +22,7 @@ const getData = (req, res, next) => {
                 }
             });
         });
-        res.render('index', { data: data,error: req.flash("error"), step: step, title: 'Calender' });
+        res.render('index', { data: data,success: "",error: req.flash("error"), step: step, title: 'Calender' });
     }).catch(err => res.status(500).setHeader('Content-Type', 'application/json').json({err: err}));
    
 }
@@ -39,7 +39,8 @@ const getData = (req, res, next) => {
     
     meetingService.addStudent(req.body.day, req.body.hour, req.body.email).then( response =>{
         studentService.setSubmit(req.body.email).then( response => {
-            res.render('success')
+            req.flash('success', 'Submited successfully');
+            res.redirect('/');
         }).catch(err => res.status(500).setHeader('Content-Type', 'application/json').json({err: err}));
     }).catch(err => res.status(500).setHeader('Content-Type', 'application/json').json({err: err}));
    

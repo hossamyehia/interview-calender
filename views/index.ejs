@@ -46,26 +46,25 @@
           <% }); 
           
           %>
-        
         <!--          Default Hours               -->
         <div class="hours default selected" data-day="Default">
           <div>
-            <label for="9">From 9 AM To 10 AM</label>
+            <label for="9">Default</label>
           </div>
           <div>
-            <label for="10">From 10 AM To 11 AM</label>
+            <label for="10">Default</label>
           </div>
           <div>
-            <label for="11">From 11 AM To 12 PM</label>
+            <label for="11">Default</label>
           </div>
           <div>
-            <label for="12">From 12 PM To 1 PM</label>
+            <label for="12">Default</label>
           </div>
           <div>
-            <label for="13">From 1 PM To 2 PM</label>
+            <label for="13">Default</label>
           </div>
           <div>
-            <label for="14">From 2 PM To 3 PM</label>
+            <label for="14">Default</label>
           </div>
         </div>
       </div>
@@ -75,6 +74,11 @@
         <div class="alert">
             <%- error %>
         </div>
+        <% } %>
+        <% if(success != "") { %>
+          <div class="success">
+              <%- success %>
+          </div>
         <% } %>
         <input type="submit" value="Submit" disabled>
       </div>
