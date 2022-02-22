@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form action="/" method="post">
+      <div class="email">
+        <label for="name">Your Gmail</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <!--           Calendar               -->
+      <div class="calendar">
+        <label for="calendar">Calendar</label>
+        <!--           DAYS               -->
+        <div class="days">
+          <div id="Wednesday">
+            <label for="Wednesday">Wednesday</label>
+            <input type="radio"  name="day" value="Wednesday" required>
+          </div>
+          <div id="Thursday">
+            <label for="Thursday">Thursday</label>
+            <input type="radio" name="day" value="Thursday">
+          </div>
+        </div>
+        <hr>
+        <!--           HOURS               -->
+        <div>
+
+          <% 
+            let color = ["zero","one","two","three","four","five","six","seven","eight"];
+            data.forEach( day => {  %>
+            <div class="hours" data-day = "<%= day._id %>">
+                <% day.hours.forEach( hour => { %>
+                <div class="<%= color[hour.numberOfStudents]%>">
+                  <label for="<%= hour.hour %>"><%= hour.title %></label>
+                  <input type="radio" name="hour" value="<%= hour.hour %>" required>
+                </div>
+              <% }); %>
+            </div>
+          <% }); 
+          
+          %>
+        
+        <!--          Default Hours               -->
+        <div class="hours default selected" data-day="Default">
+          <div>
+            <label for="9">From 9 AM To 10 AM</label>
+          </div>
+          <div>
+            <label for="10">From 10 AM To 11 AM</label>
+          </div>
+          <div>
+            <label for="11">From 11 AM To 12 PM</label>
+          </div>
+          <div>
+            <label for="12">From 12 PM To 1 PM</label>
+          </div>
+          <div>
+            <label for="13">From 1 PM To 2 PM</label>
+          </div>
+          <div>
+            <label for="14">From 2 PM To 3 PM</label>
+          </div>
+        </div>
+      </div>
+      <p>Interview duration is maximum 15 minutes.</p>
+      <div>
+        <% if(error != "") { %>
+        <div class="alert">
+            <%- error %>
+        </div>
+        <% } %>
+        <input type="submit" value="Submit" disabled>
+      </div>
+    </form>
+    <script src="../javascripts/index.js"></script>
+    <script id="data" type="application/json"><%- JSON.stringify(step) %></script>
+  </body>
+</html>
