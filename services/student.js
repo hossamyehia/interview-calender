@@ -50,9 +50,26 @@ const getAll = ()=>{
     });
 }
 
+/**
+ * Update to submit
+ * @param {String} email 
+ * @returns 
+ */
+const setSubmit = (email)=>{
+    return new Promise((resolve, reject) => {
+
+        Student.updateOne({email:email},{$set: {submited: true}}).then((res) => {
+            resolve(res);
+        }).catch(err => {
+            reject(err);
+        });
+        
+    });
+}
 
 module.exports = {
     addMany,
     get,
-    getAll
+    getAll,
+    setSubmit
 }

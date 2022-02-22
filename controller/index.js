@@ -1,5 +1,4 @@
-const { json } = require('express/lib/response');
-const { response } = require('../app');
+const studentService = require('../services/student')
 const meetingService = require('../services/meetings');
 
 
@@ -39,7 +38,9 @@ const getData = (req, res, next) => {
  const addStudent = (req, res, next) => {
     
     meetingService.addStudent(req.body.day, req.body.hour, req.body.email).then( response =>{
-        res.render('success')
+        studentService.setSubmit(req.body.email).then( response => {
+            res.render('success')
+        }).catch(err => res.status(500).setHeader('Content-Type', 'application/json').json({err: err}));
     }).catch(err => res.status(500).setHeader('Content-Type', 'application/json').json({err: err}));
    
 }
