@@ -27,8 +27,12 @@ const handleSelection = () => {
 
     let prevDay = null;
     let prevHour = null;
+    let Day = null;
+    let Hour = null;
+    /*
     let currentDay = null;
     let currentHour = null;
+    */
     let data = null;
 
     button.disabled = true;
@@ -64,17 +68,21 @@ const handleSelection = () => {
         if (target !== prevDay) {
 
             prevDay.parentNode.classList.toggle("daySelect");
-            prevDay = currentDay;
+            //prevDay = currentDay;
+            prevDay = target;
 
             parent.classList.toggle("daySelect");
 
-            currentDay = target;
+            //currentDay = target;
+            Day = target.value;
 
         }else{
             prevDay.parentNode.classList.toggle("daySelect");
-            currentDay = prevDay;
+            //currentDay = prevDay;
+            Day = prevDay.value;
         }
-        toggleHours(currentDay.value);
+        //toggleHours(currentDay.value);
+        toggleHours(Day);
         activeButton();
 
     }
@@ -89,6 +97,14 @@ const handleSelection = () => {
         let target = event.target;
         let parent = target.parentNode;
         
+        let oldClass = data[Day][target.value.toString()][0]; 
+        let newClass = data[Day][target.value.toString()][1]; 
+
+        if(parent.classList.contains(oldClass))
+            parent.classList.remove(oldClass);
+
+        if(!parent.classList.contains(newClass))
+            parent.classList.add(newClass);
         if (target !== prevHour) {
             console.log("Others");
 
@@ -101,8 +117,8 @@ const handleSelection = () => {
             if(prevHour.parentNode.classList.contains(newClass))
                 prevHour.parentNode.classList.remove(newClass);
             
-            prevHour = currentHour;
-
+            prevHour = target;
+            /*
             oldClass = data[currentDay.value][target.value.toString()][0]; 
             newClass = data[currentDay.value][target.value.toString()][1]; 
             if(parent.classList.contains(oldClass))
@@ -110,20 +126,23 @@ const handleSelection = () => {
 
             if(!parent.classList.contains(newClass))
                 parent.classList.add(newClass);
-
-            currentHour = target;
+            */
+            Hour = target.value;
 
         }else{
-            console.log("First");
+            //console.log("First");
+            
             let oldClass = data[prevDay.value][prevHour.value.toString()][0];
+            /*
             let newClass = data[prevDay.value][prevHour.value.toString()][1];
             if(prevHour.parentNode.classList.contains(oldClass))
                 prevHour.parentNode.classList.remove(oldClass);
 
             if(!prevHour.parentNode.classList.contains(newClass))
                 prevHour.parentNode.classList.add(newClass);
-
-            currentHour = prevHour.value;
+            */
+            prevHour.parentNode.classList.toggle(oldClass);
+            Hour = prevHour.value;
         }
 
         activeButton();
@@ -152,7 +171,7 @@ const handleSelection = () => {
      * Active Next Button When the user finish selection
      */
     const activeButton = () => {
-        if(currentDay != null && currentHour != null){
+        if(Day != null && Hour != null){
             button.disabled = false;
         }else{
             button.disabled = true;
