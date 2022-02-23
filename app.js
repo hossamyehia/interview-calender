@@ -32,10 +32,11 @@ app.use(cookieParser(process.env.SECRETKEY));
 app.use(session({cookie: { maxAge: 60000 }}));
 app.use(flash());
 
-
+/*
 app.use((req, res, next) => {
   res.render('closed')
 })
+*/
 
 app.use('/', indexRouter);
 //app.use('/meetings', meetingsRouter);

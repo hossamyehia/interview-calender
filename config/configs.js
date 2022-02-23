@@ -5,6 +5,7 @@ const DB =process.env.DB;
 
 const authMechanism = "DEFAULT";
 
+const DBSTRING = "mongodb://127.0.0.1:27017/Calender?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.1.9"
 const MONGOURI = `mongodb+srv://${username}:${password}@${clusterUrl}/${DB}?retryWrites=true&w=majority`;
 
 module.exports = {

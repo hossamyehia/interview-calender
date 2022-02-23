@@ -15,6 +15,13 @@
         <label for="calendar">Calendar</label>
         <!--           DAYS               -->
         <div class="days">
+          <% data.forEach( day => {  %>
+            <div id="<%= day._id %>">
+              <input type="radio"  name="day" value="<%= day._id %>" required>
+              <label for="<%= day._id %>"><%= day._id %></label>
+            </div>
+          <% }); %>
+          <!--              
           <div id="Wednesday">
             <label for="Wednesday">Wednesday</label>
             <input type="radio"  name="day" value="Wednesday" required>
@@ -23,19 +30,18 @@
             <label for="Thursday">Thursday</label>
             <input type="radio" name="day" value="Thursday">
           </div>
+          -->
         </div>
         <hr>
         <!--           HOURS               -->
         <div>
 
-          <% 
-            let color = ["zero","one","two","three","four","five","six","seven","eight"];
-            data.forEach( day => {  %>
+          <% data.forEach( day => {  %>
             <div class="hours" data-day = "<%= day._id %>">
                 <% day.hours.forEach( hour => { %>
                 <div class="<%= color[hour.numberOfStudents]%>">
                   <label for="<%= hour.hour %>"><%= hour.title %></label>
-                  <%if(hour.numberOfStudents === 8) {%>
+                  <%if(hour.numberOfStudents === 10) {%>
                     <input type="radio" name="hour" value="<%= hour.hour %>" disabled>
                   <% }else {%>
                     <input type="radio" name="hour" value="<%= hour.hour %>" required>
@@ -43,9 +49,7 @@
                 </div>
               <% }); %>
             </div>
-          <% }); 
-          
-          %>
+          <% }); %>
         <!--          Default Hours               -->
         <div class="hours default selected" data-day="Default">
           <div>

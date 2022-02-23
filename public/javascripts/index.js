@@ -43,10 +43,11 @@ const handleSelection = () => {
         data = JSON.parse(jsonTag.text);
 
         jsonTag.remove();
-
+        
         days.forEach((day , index) => {
             day.addEventListener('change',daySelect)
         })
+        
         dayOneHours.forEach((hour , index) => {
             hour.addEventListener("change",hourSelect)
         })
@@ -54,6 +55,7 @@ const handleSelection = () => {
         dayTwoHours.forEach((hour , index) => {
             hour.addEventListener("change",hourSelect)
         })
+        
     });
 
     

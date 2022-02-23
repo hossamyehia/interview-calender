@@ -12,17 +12,17 @@ const getData = (req, res, next) => {
 
     meetingService.getAll().then( data =>{
         let step = {};
-        let color = ["zero","one","two","three","four","five","six","seven","eight"];
+        let color = ["zero","one","two","three","four","five","six","seven","eight","nine","ten"];
         data.forEach(day => {
             step[day._id] = {};
             day.hours.forEach( hour => { 
                 step[day._id][hour.hour.toString()] = [color[hour.numberOfStudents]]
-                if(hour.numberOfStudents != 8){
+                if(hour.numberOfStudents != 10){
                     step[day._id][hour.hour.toString()].push(color[hour.numberOfStudents + 1]);
                 }
             });
         });
-        res.render('index', { data: data,success: req.flash('success'),error: req.flash("error"), step: step, title: 'Calender' });
+        res.render('index', { data: data,color: color, success: req.flash('success'),error: req.flash("error"), step: step, title: 'Calender' });
     }).catch(err => res.status(500).setHeader('Content-Type', 'application/json').json({err: err}));
    
 }
