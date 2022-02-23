@@ -193,10 +193,6 @@ input[type="submit"]:active{
   background: linear-gradient(to top,#ffffff 0%, white 0% 100%);
 }
 
-.zero:checked{
-  background: linear-gradient(to top,#e2f3f5 12.5%, white 12.5% 100%);
-}
-
 .one{
   background: linear-gradient(to top,#e2f3f5 10%, white 12.5% 100%);
 }
