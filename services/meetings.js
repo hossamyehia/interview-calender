@@ -58,10 +58,10 @@ const getAll = ()=>{
  * @param {String} email
  * @returns Promise "Done msg" || "Error"
  */
-const addStudent = (day, hour, email) => {
+const addStudent = (time, student) => {
     return new Promise((resolve, reject) => {
 
-        Meeting.updateOne({day: day,hour:hour},{$inc: {numberOfStudents: 1},$push: {students:email}}).then((res) => {
+        Meeting.updateOne(time,{$inc: {numberOfStudents: 1},$push: {students:student}}).then((res) => {
             resolve(res);
         }).catch(err => {
             reject(err);
@@ -77,7 +77,7 @@ const addStudent = (day, hour, email) => {
 const removeStudent = (email) => {
     return new Promise((resolve, reject) => {
 
-        Meeting.updateOne({ students: { $in: [email] } },{$inc: {numberOfStudents: -1},$pull: {students:email}}).then((res) => {
+        Meeting.updateOne({ students: { $elemMatch: {email: email} } },{$inc: {numberOfStudents: -1},$pull: {students: {email: email} }}).then((res) => {
             resolve(res);
         }).catch(err => {
             reject(err);

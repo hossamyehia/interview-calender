@@ -37,7 +37,16 @@ const getData = (req, res, next) => {
  */
  const addStudent = (req, res, next) => {
     
-    meetingService.addStudent(req.body.day, req.body.hour, req.body.email).then( response =>{
+    let student = {
+        name: req.body.name,
+        email: req.body.email
+    }
+
+    let time = {
+        day:req.body.day,
+        hour:req.body.hour
+    }
+    meetingService.addStudent(time, student).then( response =>{
         studentService.setSubmit(req.body.email).then( response => {
             req.flash('success', 'Submited successfully');
             res.redirect('/');

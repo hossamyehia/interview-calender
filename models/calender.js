@@ -20,7 +20,8 @@ const meetingsSchema = new Schema({
         max: 8
     },
     students:[{
-        type: String
+        name: String,
+        email: String
     }]
 });
 

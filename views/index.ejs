@@ -6,13 +6,15 @@
   </head>
   <body>
     <form action="/" method="post">
-      <div class="email">
-        <label for="name">Your Gmail</label>
+      <div class="data">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Your Gmail</label>
         <input type="email" id="email" name="email" required>
       </div>
       <!--           Calendar               -->
       <div class="calendar">
-        <label for="calendar">Calendar</label>
+        <label for="calendar">Choose Time</label>
         <!--           DAYS               -->
         <div class="days">
           <% data.forEach( day => {  %>

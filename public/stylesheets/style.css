@@ -19,15 +19,15 @@ body {
 
 form{
   
-  width: 320px;
-  padding: 25px;
+  width: 330px;
+  padding: 20px;
   border: 1px solid #2c306f;
   border-radius: 5px;
 
   background-color: #ffffff;
 }
 
-.email label {
+.data label {
   display: block;
   color: #2c306f;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -36,7 +36,7 @@ form{
 
   padding: 10px 0px;
 }
-.email input {
+.data input {
   color: black;
   padding: 0 0 0 5px;
   width: 100%;
