@@ -28,8 +28,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use(cookieParser(process.env.SECRETKEY));
-app.use(session({cookie: { maxAge: 60000 }}));
+app.use(session({
+  secret: process.env.SECRETKEY,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    secure: true,
+    maxAge: 60000 
+  } 
+}));
 app.use(flash());
 
 /*
